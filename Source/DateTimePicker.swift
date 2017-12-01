@@ -214,7 +214,7 @@ import UIKit
                                           width: frame.width,
                                           height: frame.height))
         shadowView.backgroundColor = backgroundViewColor ?? UIColor.black.withAlphaComponent(0.3)
-        shadowView.alpha = 1
+        shadowView.alpha = 0
         let shadowViewTap = UITapGestureRecognizer(target: self, action: #selector(DateTimePicker.dismissView(sender:)))
         shadowView.addGestureRecognizer(shadowViewTap)
         addSubview(shadowView)
@@ -426,6 +426,7 @@ import UIKit
                                             y: self.frame.height - self.contentHeight,
                                             width: self.frame.width,
                                             height: self.contentHeight)
+            self.shadowView.alpha = 1
         }, completion: nil)
     }
     
@@ -533,6 +534,7 @@ import UIKit
                                             y: self.frame.height,
                                             width: self.frame.width,
                                             height: self.contentHeight)
+            self.shadowView.alpha = 0
         }) {[weak self] (completed) in
             guard let `self` = self else {
                 return
